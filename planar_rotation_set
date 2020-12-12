@@ -1,0 +1,33 @@
+function R_set = planar_rotation_set(joint_angles)
+% Generate a set of planar rotation matrices corresponding to the angles in
+% the input vector
+%
+% Input:
+%
+%   joint_angles: a 1xn or nx1 vector of joint angles
+        s = size(joint_angles);
+        len = max(s); % this will grab the longest length
+%
+% Output:
+%
+%   R_set: a cell array of the same size as the vector angles, in which
+%       each cell contains the planar rotation matrix for the angle in the
+%       corresponding entry of the vector
+
+    %%%%%%%
+    % First, create an empty cell array called R_set that is the same size
+    % as the vector of joint angles, using the 'cell' and 'size' functions
+    R_set = cell(s);
+ 
+    %%%%%%%
+    % Loop over the joint angles, creating a rotation matrix and placing it
+    % in the corresponding entry of R_set
+    i = 1;
+
+    for i = 1:len
+        angle = joint_angles(i);
+        R_set{i} = (R_planar(angle));
+    end
+                
+
+end
